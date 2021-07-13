@@ -21,7 +21,7 @@ public class Product implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
+	private Long id;
 	private String name;
 	@ManyToOne
 	@JoinColumn(name = "sub_category_id")
@@ -42,6 +42,12 @@ public class Product implements Serializable {
 		this.quantity = quantity;
 		this.picture = picture;
 		this.numberSeller = numberSeller;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -73,7 +79,6 @@ public class Product implements Serializable {
 	public void setNumberSeller(Integer numberSeller) {
 		this.numberSeller = numberSeller;
 	}
-	
 	
 	
 }
