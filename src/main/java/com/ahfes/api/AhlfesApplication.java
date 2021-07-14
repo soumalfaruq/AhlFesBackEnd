@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -15,19 +16,24 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import com.ahfes.api.model.Food;
 import com.ahfes.api.model.FoodType;
 import com.ahfes.api.model.Place;
+import com.ahfes.api.model.ProductCategory;
+import com.ahfes.api.model.ProductSubCategory;
+import com.ahfes.api.model.TypeProduct;
 import com.ahfes.api.repository.FoodRepository;
 import com.ahfes.api.repository.FoodTypeRepository;
 import com.ahfes.api.repository.PlaceRepository;
 import com.ahfes.api.repository.ProductCategoryRepositorty;
 import com.ahfes.api.repository.ProductRepository;
 import com.ahfes.api.repository.ProductSubCategoryRepository;
-
+import com.ahfes.api.repository.TypeProductRepository;
+@EnableCaching
 @SpringBootApplication
 public class AhlfesApplication implements RepositoryRestConfigurer {
 
 
 	@Autowired
     private EntityManager entityManager;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(AhlfesApplication.class, args);
@@ -38,6 +44,7 @@ public class AhlfesApplication implements RepositoryRestConfigurer {
 	        config.exposeIdsFor(entityManager.getMetamodel().getEntities().stream().map(e -> e.getJavaType()).collect(Collectors.toList()).toArray(new Class[0]));
 	        
 	    }
+
 	
 
 }
